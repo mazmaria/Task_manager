@@ -16,6 +16,6 @@
     
     TasksController.$inject = ["$scope", "tasksFactory"];
     
-    angular.module("usersModule").controller("TasksController", TasksController);
+    angular.module("tasksModule").controller("TasksController", TasksController);
     
 }());

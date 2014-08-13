@@ -14,6 +14,6 @@
     
     tasksFactory.$inject = ["$http"];
     
-    angular.module("usersModule").factory("tasksFactory", tasksFactory);
+    angular.module("tasksModule").factory("tasksFactory", tasksFactory);
     
 }());
