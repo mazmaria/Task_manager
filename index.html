@@ -4,18 +4,23 @@
         <title>Task Manager</title>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link href="assests/style.css" rel="stylesheet" type="text/css" />
+        <link href="assests/style.css" rel="stylesheet" type="text/css">
     </head>
     <body>
-        
-        
+        <ul>
+            <li><a href="#/users">Users</a></li>
+            <li><a href="#/tasks">Tasks</a></li>
+        </ul>
+
         <div ng-view></div>
         
         
     <script src="lib/angular.min.js"></script>
     <script src="lib/angular-route.js"></script>
-    <script src="app/users/usersApp.js"></script>
+    <script src="app/users/users.js"></script>
     <script src="app/users/controllers/usersController.js"></script>
+    <script src="app/users/controllers/tasksController.js"></script>
     <script src="app/users/services/usersFactory.js"></script>
+    <script src="app/users/services/tasksFactory.js"></script>
     </body>
 </html>
