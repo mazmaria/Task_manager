@@ -12,6 +12,10 @@
                     controller: "TasksController",
                     templateUrl: "app/tasks/views/tasksView.html"
                 })
+                .when("/newtask", {
+                    controller: "NewTaskController",
+                    templateUrl: "app/tasks/views/newTask.html"
+                })
                 .otherwise({redirectTo: "/"});
     });
     

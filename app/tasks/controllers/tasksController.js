@@ -12,6 +12,7 @@
         }
         
         init();
+        
     };
     
     TasksController.$inject = ["$scope", "tasksFactory"];
