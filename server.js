@@ -31,13 +31,13 @@ app.get("/tasks", function (req, res) {
 });
 
 app.post("/create_new_task", function (req, res) {
-//    tasks.append(JSON.stringify(req.body));
-    //res.end(JSON.stringify(req.body));
-    req.body.created_at = new Date();
     tasks.push(req.body);
-   res.json(req.body);
-   
-    
+
+   res.json(req.body);  
+});
+
+app.delete("/tasks/delete/:id", function (req, res) {
+//    var taskId = 
 });
 
 app.listen(8080);

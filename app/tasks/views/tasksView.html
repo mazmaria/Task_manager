@@ -1,3 +1,9 @@
+Filter: <input type="text" placeholder="Search task..." ng-model="taskFilter.title">
 <ul>
-    <li ng-repeat="task in tasks"><strong>Title:</strong> {{ task.title }}. <strong>Created:</strong> {{ task.created_at }}.</li>
+    <li ng-repeat="task in tasks | filter:taskFilter "><strong>Title:</strong> {{ task.title }}. <strong>Created:</strong> {{ task.created_at }}.<button>Delete</button></li>
 </ul>
+<h3>Create new task</h3>
+<form action="">
+    <input type="text" placeholder="title" ng-model="taskTitle">
+    <input type="submit" value="Create" ng-click="createNewTask(taskTitle)">
+</form>
