@@ -1,7 +1,11 @@
 var express = require("express"),
-    app = express();
+    app = express(),
+    bodyParser = require("body-parser");
+    
     
     app.use(express.static(__dirname, "/"));
+    
+    app.use(bodyParser.json()); // put the parsed body to req.body
 
 
 app.get("/customers/:id", function (req, res) {
@@ -24,6 +28,16 @@ app.get("/users", function (req, res) {
 // Getting all tasks
 app.get("/tasks", function (req, res) {
     res.json(tasks);
+});
+
+app.post("/create_new_task", function (req, res) {
+//    tasks.append(JSON.stringify(req.body));
+    //res.end(JSON.stringify(req.body));
+    req.body.created_at = new Date();
+    tasks.push(req.body);
+   res.json(req.body);
+   
+    
 });
 
 app.listen(8080);
