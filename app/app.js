@@ -4,6 +4,10 @@
     
     app.config(function ($routeProvider) {
         $routeProvider
+                .when("/", {
+                    controller: "TasksController",
+                    templateUrl: "app/tasks/views/tasksView.html"
+                })
                 .when("/users", {
                     controller: "UsersController",
                     templateUrl: "app/users/views/usersView.html"
@@ -16,7 +20,7 @@
 //                    controller: "NewTaskController",
 //                    templateUrl: "app/tasks/views/newTask.html"
 //                })
-                .otherwise({redirectTo: "/"});
+                /*.otherwise({redirectTo: "/"})*/;
     });
     
 }());

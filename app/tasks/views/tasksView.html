@@ -1,6 +1,8 @@
 Filter: <input type="text" placeholder="Search task..." ng-model="taskFilter.title">
 <ul>
-    <li ng-repeat="task in tasks | filter:taskFilter "><strong>Title:</strong> {{ task.title }}. <strong>Created:</strong> {{ task.created_at }}.<button>Delete</button></li>
+    <li ng-repeat="task in tasks | filter:taskFilter "><strong>Title:
+        </strong> {{ task.title }}. <strong>Created:</strong> {{ task.created_at }}.
+        <button ng-click="deleteTask(task.id)">Delete</button></li>
 </ul>
 <h3>Create new task</h3>
 <form action="">

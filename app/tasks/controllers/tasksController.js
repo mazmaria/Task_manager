@@ -26,6 +26,18 @@
                     });
         };
 
+        // Delete task
+        $scope.deleteTask = function (taskId) {
+            _.find($scope.tasks, function (task, index) {
+                if (task.id === taskId) {
+                    $scope.tasks.splice(index, 1);
+                }
+            });
+            
+            console.log($scope.tasks);
+            $http.delete("/tasks/delete/" + taskId);
+            
+        };
         
         
         function init() {
