@@ -12,6 +12,10 @@
                     controller: "UsersController",
                     templateUrl: "app/users/views/usersView.html"
                 })
+                .when("/users/new", {
+                    controller: "NewUserController",
+                    templateUrl: "app/users/views/newUser.html"
+                })
                 .when("/tasks", {
                     controller: "TasksController",
                     templateUrl: "app/tasks/views/tasksView.html"

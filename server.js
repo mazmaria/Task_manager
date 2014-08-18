@@ -44,9 +44,8 @@ app.get("/customers/:id", function (req, res) {
 
 app.get("/users", function (req, res) {
     Users.find({}, function (err, docs) {
-        res.send(docs);
-    });
-    
+        res.json(docs);
+    });  
 });
 
 //New
