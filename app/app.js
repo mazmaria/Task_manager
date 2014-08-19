@@ -12,9 +12,17 @@
                     controller: "UsersController",
                     templateUrl: "app/users/views/usersView.html"
                 })
+                .when("/users/:userName/:userId/edit", {
+                    controller: "EditUserController",
+                    templateUrl: "app/users/views/editUserView.html"
+                })
+                .when("/users/:userName/:userId", {
+                    controller: "SingleUserController",
+                    templateUrl: "app/users/views/singleUserView.html"
+                })
                 .when("/users/new", {
                     controller: "NewUserController",
-                    templateUrl: "app/users/views/newUser.html"
+                    templateUrl: "app/users/views/newUserView.html"
                 })
                 .when("/tasks", {
                     controller: "TasksController",

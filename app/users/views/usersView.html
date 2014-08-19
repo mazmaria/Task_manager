@@ -1,6 +1,5 @@
 Filter:<input type="text" placeholder="Search users..." ng-model="usersFilter.name">
 <ul>
-    <li ng-repeat="user in users | filter: usersFilter">{{ user.name }} {{ user.created_at }}</li>
-    
+    <li ng-repeat="user in users | filter: usersFilter"><a href="#/users/{{ user.name }}/{{ user._id }}">{{ user.name }} {{ user.created_at }}</a></li>
 </ul>
 <p><a href="#/users/new">Create New User</a></p>

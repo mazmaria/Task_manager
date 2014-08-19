@@ -1,0 +1,25 @@
+<h1>Single User</h1>
+<table>
+    <thead>
+        <tr>
+            <th>Name:</th>
+            <th>Email:</th>
+            <th>Age</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>{{ user.name }}</td>
+            <td>{{ user.email }}</td>
+            <td>{{ user.age }}</td>
+        </tr>
+        <tr>
+            <td></td>
+            <td></td>
+            <td></td>
+        </tr>
+
+    </tbody>
+
+</table>
+<p><button ng-click="editUser(user.name, user._id)">Edit User</button><button ng-click="deleteUser(user._id)">Delete User</button></p>

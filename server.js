@@ -28,43 +28,58 @@ var UserSchema = new mongoose.Schema({
     Users = mongoose.model("Users", UserSchema);
 
 
-
-
-app.get("/customers/:id", function (req, res) {
-    var customerId = parseInt(req.params.id);
-    var data = {};
-    for (var i = 0, len = customers.length; i < len; i++) {
-        if (customers[i].id === customerId) {
-            data = customers[i];
-            break;
-        }
-    }
-    res.json(data);
-});
-
+// Get users list
 app.get("/users", function (req, res) {
     Users.find({}, function (err, docs) {
         res.json(docs);
     });  
 });
 
-//New
-
-app.post("/user_new", function (req, res) {
-    var b = req.body;
-    new Users({
-        name: b.name
-    }).save(function(err, docs) {
-        res.send("user created");
+// Get single user
+app.get("/users/:userId", function (req, res) {
+    Users.find({_id: req.params.userId}, function (err, docs) {
+        res.json(docs[0]);
     });
 });
 
+// Create new user
+app.post("/users/new", function (req, res) {
+    
+    var b = req.body;
+    
+    new Users({
+        name: b.name,
+        email: b.email,
+        age: b.age
+    }).save(function(err, docs) {
+        res.json(docs);
+    });
+    
+});
+
+// Update user
+app.put("/users/:userName/:userId/edit", function(req, res) {
+    
+    var b = req.body;
+    
+    Users.update({_id: req.params.userId}, {
+        name: b.name,
+        email: b.email,
+        age: b.age
+    }, function (err) {
+        res.json(err);
+    });
+    
+    
+});
 
 
-// Getting all users
-//app.get("/users", function (req, res) {
-//    res.json(users);
-//});
+// Delete user
+app.delete("/users/delete/:userId", function(req, res) {
+    Users.remove({_id: req.params.userId}, function(err) {
+       res.json(err);
+    });
+});
 
 // Getting all tasks
 app.get("/tasks", function (req, res) {
@@ -74,10 +89,6 @@ app.get("/tasks", function (req, res) {
 app.post("/create_new_task", function (req, res) {
     tasks.push(req.body);
     res.json(req.body);  
-});
-
-app.get("/hi/:userId", function (req, res) {   
-    res.send("Hello " + req.params.userId);
 });
 
 // Delete task from array of tasks
@@ -90,28 +101,10 @@ app.delete("/tasks/delete/:id", function (req, res) {
     });
 });
 
-app.post("/test", function (req, res) {
-    res.send("Hello " + req.body.name);
-});
-
 app.listen(8080);
 
 console.log("Express listening on port 8080");
 
-
-// All users list
-var users = [
-    {
-        name: "Nick",
-        id: 1,
-        created_at : "20/11/2011"
-    },
-    {
-        name: "Den",
-        id: 2,
-        created_at : "22/11/2011"
-    }
-];
 
 // All tasks list
 var tasks = [
