@@ -45,3 +45,6 @@ textarea {
 .list-group-item > a {
     display: block;
 }
+.panel-heading, .panel-body {
+    cursor: pointer;
+}

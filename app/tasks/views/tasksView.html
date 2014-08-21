@@ -9,9 +9,9 @@
 <ul>
     <li ng-repeat="task in tasks | filter:taskFilter" class="task">
         <div class="panel panel-default">
-            <div class="panel-heading">{{ task.title }}</div>
-            <div class="panel-body">
-                {{ task.content }}
+            <div class="panel-heading" editable-text="task.title">{{ task.title || "no title" }}</div>
+            <div class="panel-body" editable-textarea="task.content" e-rows="7" e-cols="86">
+                {{ task.content || "no content" }}
             </div>
             <div class="panel-footer clearfix">
                 <div class="pull-right">

@@ -1,13 +1,13 @@
 (function() {
     
-    var app = angular.module("AppModule", ["usersModule", "tasksModule", "ngRoute"]);
+    var app = angular.module("AppModule", ["usersModule", "tasksModule", "ngRoute", "xeditable"]);
+    
+    app.run(function(editableOptions) {
+        editableOptions.theme = 'bs3'; // bootstrap3 theme. Can be also 'bs2', 'default'
+    });
     
     app.config(function ($routeProvider) {
         $routeProvider
-//                .when("/", {
-//                    controller: "TasksController",
-//                    templateUrl: "app/tasks/views/tasksView.html"
-//                })
                 .when("/", {
                     controller: "UsersController",
                     templateUrl: "app/users/views/usersView.html"
