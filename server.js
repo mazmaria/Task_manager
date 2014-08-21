@@ -27,6 +27,65 @@ var UserSchema = new mongoose.Schema({
 }),
     Users = mongoose.model("Users", UserSchema);
 
+var TaskSchema = new mongoose.Schema({
+    title: String,
+    created_at: String,
+    content: String
+}),
+    Tasks = mongoose.model("Tasks", TaskSchema);
+    
+    
+// Get tasks list
+app.get("/tasks", function (req, res) {
+    Tasks.find({}, function (err, docs) {
+        res.json(docs);
+    });
+});
+
+// Create task
+app.post("/tasks/new", function (req, res) {
+    
+    var b = req.body;
+    
+    new Tasks({
+        title: b.title,
+        created_at: new Date().valueOf(),
+        content: b.content
+    }).save(function (err, docs) {
+        res.json(docs);
+    });
+    
+});
+
+// Get single task
+app.get("/tasks/:taskId", function (req, res) {
+    Tasks.find({_id: req.params.taskId}, function (err, docs) {
+       res.json(docs[0]);
+    });
+});
+
+// Update task
+app.put("/tasks/:taskId/update", function (req, res) {
+    
+    var b = req.body;
+    console.log(b);
+    console.log(req.params.taskId);
+    Tasks.update({_id: req.params.taskId}, {
+        title: b.title,
+        content: b.content,
+        created_at: new Date()
+    }, function (err, docs) {
+        res.json(docs);
+    });
+
+});
+
+// Delete task
+app.delete("/tasks/delete/:taskId", function (req, res) {
+    Tasks.remove({_id: req.params.taskId}, function (err) {
+        res.json(err);
+    });
+});
 
 // Get users list
 app.get("/users", function (req, res) {
@@ -78,26 +137,6 @@ app.put("/users/:userName/:userId/edit", function(req, res) {
 app.delete("/users/delete/:userId", function(req, res) {
     Users.remove({_id: req.params.userId}, function(err) {
        res.json(err);
-    });
-});
-
-// Getting all tasks
-app.get("/tasks", function (req, res) {
-    res.json(tasks);
-});
-
-app.post("/create_new_task", function (req, res) {
-    tasks.push(req.body);
-    res.json(req.body);  
-});
-
-// Delete task from array of tasks
-app.delete("/tasks/delete/:id", function (req, res) {
-    var taskId = parseInt(req.params.id, 10);
-    _und.find(tasks, function (task, index) {
-        if (task.id === taskId) {
-            tasks.splice(index, 1);
-        }
     });
 });
 

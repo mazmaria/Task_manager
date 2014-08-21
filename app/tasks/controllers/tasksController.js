@@ -1,41 +1,32 @@
 (function() {
     
-    var TasksController = function($scope, tasksFactory, $http/*, newTaskFactory*/) {
+    var TasksController = function($scope, tasksFactory, $http, $location) {
         
-        $scope.tasks = [];
+        $scope.editTask = function(taskId) {
+            $location.path("/tasks/" + taskId + "/edit");
+        };
         
-        $scope.createNewTask = function(title) {
+        $scope.createNewTask = function(title, taskContent) {
             
-            // get only id param from tasks
-            var onlyId = _.pluck($scope.tasks, "id"),
-                    
-            // defining new ID for task
-                newId = _.max(onlyId),
-                        
-            // new task object        
-                newTask = {
-                    title: title,
-                    created_at: new Date(),
-                    id: newId + 1
-                };
-            // adding new task to the server
-            $http.post("/create_new_task", newTask)
+            var newTask = {
+                title: title,
+                content: taskContent
+            };
+            
+            $http.post("tasks/new", newTask)
                     .success(function (data) {
-                        // adding new task to our $scope
-                        $scope.tasks.push(data);            
+                       $scope.tasks.push(data);
                     });
+                
         };
 
         // Delete task
         $scope.deleteTask = function (taskId) {
-            _.find($scope.tasks, function (task, index) {
-                if (task.id === taskId) {
-                    $scope.tasks.splice(index, 1);
-                }
-            });
             
-            console.log($scope.tasks);
-            $http.delete("/tasks/delete/" + taskId);
+            $http.delete("/tasks/delete/" + taskId)
+                    .success(function() {
+                       init();
+                });
             
         };
         
@@ -51,7 +42,7 @@
         
     };
     
-    TasksController.$inject = ["$scope", "tasksFactory"/*, "newTaskFactory"*/, "$http"];
+    TasksController.$inject = ["$scope", "tasksFactory", "$http", "$location"];
     
     angular.module("tasksModule").controller("TasksController", TasksController);
     

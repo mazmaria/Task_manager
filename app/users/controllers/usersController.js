@@ -1,7 +1,10 @@
 (function() {
     
     var UsersController = function ($scope, usersFactory) {
+        
         $scope.users = [];
+        $scope.predicate = "name";
+        $scope.sort = true;
         
         function init() {
             usersFactory.getUsers()

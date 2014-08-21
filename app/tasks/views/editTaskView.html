@@ -1,0 +1,16 @@
+<nav class="navbar navbar-default">
+    <p class="navbar-text">Edit task: <strong>{{ task.title }}</strong></p>      
+</nav>
+<form>
+    <label for="task-title">Task title:</label>
+    <div class="form-group">
+        <input id="task-title" class="form-control" type="text" ng-model="task.title">
+    </div>
+    <label for="task-content">Task content:</label>
+    <div class="form-group">
+        <textarea class="form-control" id="task-content" type="text" rows="6" ng-model="task.content"></textarea>
+    </div>
+    <div class="form-group">
+        <input class="btn btn-primary" type="submit" value="Update" ng-click="updateTask(task._id, task)">
+    </div>
+</form>

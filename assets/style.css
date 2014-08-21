@@ -1,0 +1,47 @@
+/* ng-cloak */
+[ng\:cloak], [ng-cloak], [data-ng-cloak], [x-ng-cloak], .ng-cloak, .x-ng-cloak, .ng-hide{
+    display:none !important;
+}
+@media (min-width: 768px) {
+    .container {
+        max-width: 730px;
+    }
+}
+@media (min-width: 768px){
+    .navbar-form.navbar-right:last-child {
+        margin-right: 0;
+    }
+}
+
+body {
+    padding: 20px 0 20px 0;
+}
+ul {
+    list-style: none;
+}
+textarea {
+   resize: none;
+}
+.header {
+    border-bottom: 1px solid #e5e5e5;
+    margin-bottom: 20px;
+}
+.header h3 {
+    padding-bottom: 20px;
+}
+.task-info {
+    margin-top: 6px;
+}
+.task-info p {
+    margin: 0;
+}
+.panel-footer {
+    background-color: rgba(245, 245, 245, 0.59);
+}
+.newtask-title {
+    border-top: 1px solid #ddd;
+    padding-top: 10px;
+}
+.list-group-item > a {
+    display: block;
+}

@@ -1,13 +1,22 @@
-<h1>Edit User {{ user.name }}</h1>
-
-<form action="">
-    User Name:
-    <div><input type="text" placeholder="New user name"  ng-model="user.name"></div>
-    User Email:
-    <div><input type="email" placeholder="User email"  ng-model="user.email"></div>
-    User Age:
-    <div><input type="number" ng-model="user.age"></div>
+<nav class="navbar navbar-default">
+    <p class="navbar-text">Edit user: <strong>{{ user.name }}</strong></p>      
+</nav>
+<form>
+    <label for="user-name">User Name:</label>
+    <div class="form-group">
+        <input id="user-name" class="form-control" type="text" ng-model="user.name">
+    </div>
+    <label for="user-email">User Email:</label> 
+    <div class="form-group">
+        <input id="user-email" class="form-control" type="email" ng-model="user.email">
+    </div>
+    <label for="user-age">User Age:</label> 
+    <div class="form-group">
+        <input id="user-age" class="form-control" type="number" ng-model="user.age">
+    </div>
     
-    <div><input type="button" value="Update" ng-click="updateUser(user.name, user._id, user)"></div>
+    <div class="form-group">
+        <input class="btn btn-primary" type="button" value="Update user" ng-click="updateUser(user.name, user._id, user)">
+    </div>
     
 </form>

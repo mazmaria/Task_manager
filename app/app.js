@@ -4,9 +4,13 @@
     
     app.config(function ($routeProvider) {
         $routeProvider
+//                .when("/", {
+//                    controller: "TasksController",
+//                    templateUrl: "app/tasks/views/tasksView.html"
+//                })
                 .when("/", {
-                    controller: "TasksController",
-                    templateUrl: "app/tasks/views/tasksView.html"
+                    controller: "UsersController",
+                    templateUrl: "app/users/views/usersView.html"
                 })
                 .when("/users", {
                     controller: "UsersController",
@@ -28,11 +32,11 @@
                     controller: "TasksController",
                     templateUrl: "app/tasks/views/tasksView.html"
                 })
-//                .when("/newtask", {
-//                    controller: "NewTaskController",
-//                    templateUrl: "app/tasks/views/newTask.html"
-//                })
-                /*.otherwise({redirectTo: "/"})*/;
+                .when("/tasks/:taskId/edit", {
+                    controller: "EditTaskController",
+                    templateUrl: "app/tasks/views/editTaskView.html"
+                })
+                .otherwise({redirectTo: "/"});
     });
     
 }());

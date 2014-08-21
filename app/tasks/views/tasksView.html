@@ -1,11 +1,39 @@
-Filter: <input type="text" placeholder="Search task..." ng-model="taskFilter.title">
+<nav class="navbar navbar-default">
+    <p class="navbar-text"><strong>Tasks list</strong></p>
+    <form class="navbar-form navbar-right">
+        <div class="form-group">
+            <input class="form-control" type="text" placeholder="Tasks filter..." ng-model="taskFilter.title">
+        </div>
+    </form>       
+</nav>
 <ul>
-    <li ng-repeat="task in tasks | filter:taskFilter "><strong>Title:
-        </strong> {{ task.title }}. <strong>Created:</strong> {{ task.created_at }}.
-        <button ng-click="deleteTask(task.id)">Delete</button></li>
+    <li ng-repeat="task in tasks | filter:taskFilter" class="task">
+        <div class="panel panel-default">
+            <div class="panel-heading">{{ task.title }}</div>
+            <div class="panel-body">
+                {{ task.content }}
+            </div>
+            <div class="panel-footer clearfix">
+                <div class="pull-right">
+                    <button class="btn btn-primary btn-sm" ng-click="editTask(task._id)">Edit</button>
+                    <button class="btn btn-primary btn-sm" ng-click="deleteTask(task._id)">Delete</button>
+                </div>
+                <div class="pull-left task-info">
+                    <p>{{ task.created_at | date: "MMM dd, yyyy in HH:mm:ss" }}</p>
+                </div>
+            </div>
+        </div>
+    </li>
 </ul>
-<h3>Create new task</h3>
-<form action="">
-    <input type="text" placeholder="title" ng-model="taskTitle">
-    <input type="submit" value="Create" ng-click="createNewTask(taskTitle)">
+<h4 class="newtask-title">Create new task</h4>
+<form>
+    <div class="form-group">
+        <input class="form-control" type="text" placeholder="Task title..." ng-model="taskTitle">
+    </div>
+    <div class="form-group">
+        <textarea rows="5" class="form-control" type="text" placeholder="Task content..." ng-model="taskContent"></textarea>
+    </div>
+    <div class="form-group">
+        <input class="btn btn-primary" type="submit" value="Create task" ng-click="createNewTask(taskTitle, taskContent)">
+    </div>
 </form>

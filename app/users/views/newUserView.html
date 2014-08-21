@@ -1,12 +1,21 @@
-<h1>Create New User</h1>
-
-<form action="">
-    User Name:
-    <div><input type="text" placeholder="New user name" ng-model="name"></div>
-    User Email:
-    <div><input type="email" placeholder="User email" ng-model="email"></div>
-    User Age:
-    <div><input type="number" ng-model="age"></div>
-    <div><input type="button" value="Create" ng-click="createNewUser(name, email, age)"></div>
+<nav class="navbar navbar-default">
+    <p class="navbar-text"><strong>Create new user:</strong></p>      
+</nav>
+<form>
+    <label for="user-name">User Name:</label>
+    <div class="form-group">
+        <input id="user-name" class="form-control" type="text" placeholder="User name..." ng-model="name">
+    </div>
+    <label for="user-email">User Email:</label>
+    <div class="form-group">
+        <input id="user-email" class="form-control" type="email" placeholder="User email..." ng-model="email">
+    </div>
+    <label for="user-age">User Age:</label>
     
+    <div class="form-group">
+        <input id="user-age" class="form-control" type="number" ng-model="age" placeholder="Age...">
+    </div>
+    <div class="form-group">
+        <input class="btn btn-primary" type="button" value="Create" ng-click="createNewUser(name, email, age)">
+    </div>
 </form>
