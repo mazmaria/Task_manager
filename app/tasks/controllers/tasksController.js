@@ -30,12 +30,27 @@
             
         };
         
+        // Update task
+        $scope.updateTask = function (editedTask) {
+            $http.put("/tasks/" + editedTask._id + "/update", editedTask)
+                    .success(function (task) {
+                        init();
+                    });
+        };
         
         function init() {
             tasksFactory.getTasks()
                     .success(function(tasks) { 
-                        $scope.tasks = tasks; 
+                        $scope.tasks = tasks;
                     });
+                    
+            $http.get("/users")
+                    .success(function (users) {
+                        users = _.pluck(users, "name");
+                        $scope.users = users;
+                
+                    });
+            
         }
         
         init();

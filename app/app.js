@@ -1,6 +1,6 @@
 (function() {
     
-    var app = angular.module("AppModule", ["usersModule", "tasksModule", "ngRoute", "xeditable"]);
+    var app = angular.module("AppModule", ["usersModule", "tasksModule", "ngRoute", "xeditable", "ui.bootstrap"]);
     
     app.run(function(editableOptions) {
         editableOptions.theme = 'bs3'; // bootstrap3 theme. Can be also 'bs2', 'default'

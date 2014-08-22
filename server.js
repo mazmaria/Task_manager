@@ -30,7 +30,8 @@ var UserSchema = new mongoose.Schema({
 var TaskSchema = new mongoose.Schema({
     title: String,
     created_at: String,
-    content: String
+    content: String,
+    attached: Array
 }),
     Tasks = mongoose.model("Tasks", TaskSchema);
     
@@ -50,7 +51,8 @@ app.post("/tasks/new", function (req, res) {
     new Tasks({
         title: b.title,
         created_at: new Date().valueOf(),
-        content: b.content
+        content: b.content,
+        attached: ["Nick", "Vasya"]
     }).save(function (err, docs) {
         res.json(docs);
     });
@@ -68,12 +70,12 @@ app.get("/tasks/:taskId", function (req, res) {
 app.put("/tasks/:taskId/update", function (req, res) {
     
     var b = req.body;
-    console.log(b);
-    console.log(req.params.taskId);
+
     Tasks.update({_id: req.params.taskId}, {
         title: b.title,
         content: b.content,
-        created_at: new Date()
+        created_at: new Date().valueOf(),
+        attached: b.attached
     }, function (err, docs) {
         res.json(docs);
     });

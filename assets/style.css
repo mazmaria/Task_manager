@@ -45,6 +45,21 @@ textarea {
 .list-group-item > a {
     display: block;
 }
-.panel-heading, .panel-body {
+.panel-heading {
+    background-color: #f5f5f5;
+}
+/*.panel-heading, .panel-body {
     cursor: pointer;
+}*/
+.task-padding {
+    padding: 10px;
+}
+.panel-body {
+    padding: 0;
+}
+.attached-users {
+    padding-left: 0; 
+}
+.attached-users > li {
+    float: left;
 }
