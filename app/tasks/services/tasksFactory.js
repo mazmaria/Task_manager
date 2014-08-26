@@ -15,6 +15,8 @@
                 content: taskContent
             };
             return $http.post("/tasks/new", newTask);
+                
+            
         };
         
         return tasks;

@@ -1,7 +1,7 @@
 (function() {
     
     var TasksController = function($scope, tasksFactory, $http, $location) {
-        
+        console.log(tasksFactory.createdTask);
         $scope.editTask = function(taskId) {
             $location.path("/tasks/" + taskId + "/edit");
         };
@@ -19,7 +19,7 @@
                     });
                 
         };
-
+         
         // Delete task
         $scope.deleteTask = function (taskId) {
             

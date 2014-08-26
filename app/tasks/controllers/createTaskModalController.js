@@ -18,7 +18,8 @@
           });
 
             modalInstance.result.then(function (selectedItem) {
-                    $scope.selected = selectedItem;
+//                    $scope.selected = selectedItem;
+                    console.log(selectedItem);
                 }, function () {
                     $log.info('Modal dismissed at: ' + new Date());
                 });
@@ -46,8 +47,14 @@
         
         $scope.ok = function (taskTitle, taskContent) {
             //$scope.createTask(taskTitle, taskContent);
-            tasksFactory.createTask(taskTitle, taskContent);
-            $modalInstance.close($scope.selected.item);
+    
+            tasksFactory.createTask(taskTitle, taskContent)
+                    .success(function (data) {
+                        
+                         $modalInstance.close(data);
+                    });
+            
+          
         };
 
         $scope.cancel = function () {
