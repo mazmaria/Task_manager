@@ -4,7 +4,7 @@
 }
 @media (min-width: 768px) {
     .container {
-        max-width: 730px;
+      //  max-width: 730px;
     }
 }
 @media (min-width: 768px){
@@ -62,4 +62,32 @@ textarea {
 }
 .attached-users > li {
     float: left;
+}
+
+html, body {
+    height: 100%;
+}
+
+body {
+    min-height: 100%;
+    background: #454e59;
+    padding-top: 0;
+    padding-bottom: 0;
+}
+
+.container {
+    min-height: 100%;
+    background: #fff;
+}
+
+.left-nav li {
+    margin: 10px 0;
+}
+
+.left-nav li:hover {
+    background: #e3ecf9;
+}
+
+.left-nav a, .left-nav a:hover {
+    text-decoration: none;
 }
